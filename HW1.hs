@@ -27,7 +27,7 @@ trafficLight c
   | c == 'Y' = topCircle black & midCircle yellow & botCircle black & frame
   | c == 'G' = topCircle black & midCircle black & botCircle green & frame
   | c == 'C' = topCircle red & midCircle yellow & botCircle black & frame
-  
+
 
 trafficController :: Double -> Picture
 trafficController t
@@ -48,10 +48,10 @@ tree :: Integer -> Picture
 tree 0 = blank
 tree n = polyline [(0,0),(0,1)] & translated 0 1 (
   rotated (pi/10) (tree (n-1)) & rotated (- pi/10) (tree (n-1)))
-  
+
 growingCircle :: Double -> Picture
 growingCircle t = colored yellow (solidCircle ((min t 2)/7))
-  
+
 bloomingTree :: Picture -> Integer -> Picture
 bloomingTree b 0 = b
 bloomingTree b n = polyline [(0,0),(0,1)] & translated 0 1 (
@@ -69,7 +69,7 @@ exercise2 = animationOf(myAnimation)
 wall, ground, storage, box :: Picture
 wall =    drawTile (grey 0.5) 1
 ground =  drawTile yellow 1
-storage = drawCircle black 0.3 & drawTile yellow 1 
+storage = drawCircle black 0.3 & drawTile yellow 1
 box =     drawTile brown 1
 
 
@@ -91,11 +91,11 @@ drawBox t = drawTile red t
 
 drawElement::Integer->Picture
 
-drawElement t 
+drawElement t
   | t == 1 = wall
   | t == 2 = ground
   | t == 3 = storage
-  | t == 4 = box 
+  | t == 4 = box
   | otherwise = blank
 
 pictureOfMaze :: Picture
@@ -116,8 +116,8 @@ pictureOfMaze = drawRows(-11)
 
 exercise3 :: IO ()
 exercise3 = drawingOf pictureOfMaze
-         
-maze :: Integer -> Integer -> Integer 
+
+maze :: Integer -> Integer -> Integer
 maze x y
   | abs x > 4  || abs y > 4  = 0
   | abs x == 4 || abs y == 4 = 1
@@ -125,4 +125,3 @@ maze x y
   | x ==  3 && y <= 0        = 3
   | x >= -2 && y == 0        = 4
   | otherwise                = 2
- 
